@@ -7,8 +7,6 @@ import {createStore} from "redux";
 
 //Store well the place where we store data 
 
-let store = createStore(counter)
-
 //action
 const increment = () =>
 {
@@ -34,8 +32,19 @@ const counter = (state=0, action) =>{
     case "DECREMENT" : return state-1;
   }
 } 
+ let store = createStore(counter)
+// to display our counter in the console window
+store.subscribe(() => console.log(store.getState()));
 
-//  
+//  dispatcher
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(decrement());
+store.dispatch(decrement());
+store.dispatch(decrement());
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -43,8 +52,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
